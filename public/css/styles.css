@@ -1,0 +1,287 @@
+:root {
+  --color-primary: #000d6b;   /* dark blue */
+  --color-secondary: #9c19e0; /* purple */
+  --color-third: #ff5da2;     /* pink */
+  --color-neutral: #4a4a4a;   /* dark gray */
+}
+
+/* reset default */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: var(--color-neutral);
+  line-height: 1.6;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 8px;
+}
+
+.logo img {
+  height: 80px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+main {
+  margin-top: 30px;
+}
+
+form {
+  background-color: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: auto;
+}
+
+form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+form button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: var(--color-secondary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: var(--color-third);
+}
+
+footer {
+  margin-top: 50px;
+  text-align: center;
+  color: var(--color-neutral);
+  font-size: 0.9em;
+}
+
+/* =========================
+   Flight results (row view)
+   ========================= */
+#results {
+  display: flex;
+  flex-direction: column; /* stack offers vertically */
+  gap: 15px;
+  margin-top: 30px;
+  padding: 10px;
+}
+
+.flight-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px 20px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.flight-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 2;
+}
+
+.flight-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.flight-times {
+  display: flex;
+  flex-direction: column;
+}
+
+.flight-times strong {
+  font-size: 16px;
+  color: #000;
+}
+
+.flight-details {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  color: #444;
+}
+
+.flight-price {
+  flex: 0 0 120px;
+  text-align: right;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.airline-logo {
+  width: 50px;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.flight-segment {
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+/* auto complete city and airport when typing */
+.input-group {
+  position: relative; /* allows dropdown to position correctly */
+  margin-bottom: 15px;
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.suggestion-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* end of auto complete */ 
+
+
+/*  airplane animation on search  */
+#loader {
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+  color: #fcfcfc;
+}
+
+.plane-animation {
+  font-size: 20px;
+  animation: fly 2s linear infinite;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.loader-text {
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+@keyframes fly {
+  0%   { transform: translateX(-50px); }
+  50%  { transform: translateX(50px); }
+  100% { transform: translateX(-50px); }
+}
+
+/*  end of airplane animation  */
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  nav ul li {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  form {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  form input[type="text"],
+  form input[type="date"],
+  form button {
+    font-size: 1em;
+  }
+
+  .flight-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .flight-price {
+    text-align: left;
+  }
+
+  footer {
+    font-size: 0.8em;
+    padding: 10px;
+  }
+}

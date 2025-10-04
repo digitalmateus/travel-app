@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cheap Flight App</title>
+  <link rel="icon" type="image/png" href="/images/travel-icon.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+
+</head>
+<body>
+   
+  <header>
+    <div class="logo">
+      <img src="/images/travel-logo.png" alt="Company Logo" />
+    </div>
+
+    <div id="loader">
+      <div class="plane-animation">✈️</div> 
+      <p>Looking for flights...</p>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#">Profile</a></li>
+      </ul>
+    </nav>
+
+    
+
+  </header>
+
+  <main>
+    <form id="flight-search-form">
+
+      <div class="input-group">
+        <label for="departure">Departure:</label>
+        <input type="text" id="departure" name="departure" placeholder="City or Airport (IATA code)" required />
+      </div>
+
+      <div class="input-group">
+        <label for="arrival">Arrival:</label>
+        <input type="text" id="arrival" name="arrival" placeholder="City or Airport (IATA code)" required />
+      </div>
+
+      <div class="input-group">
+        <label for="date-departure">Departure Date:</label>
+        <input type="date" id="date-departure" name="date-departure" required />
+      </div>
+
+      <div class="input-group">
+        <label for="date-returning">Return Date:</label>
+        <input type="date" id="date-returning" name="date-returning" />
+      </div>
+
+      <label>
+        <input type="checkbox" id="one-way" name="one-way" />
+        One way only
+      </label>
+
+      <button type="submit">Search Flights</button>
+    </form>
+
+    
+
+  <!-- ✅ Results area -->
+  <section id="results"></section>
+  
+  
+
+</main>
+
+
+  <footer>
+    <p>&copy; 2025 Cheap Flights. All rights reserved.</p>
+  </footer>
+  <script src="/js/script.js" defer></script>
+</body>
+</html>
