@@ -29,12 +29,14 @@ document.getElementById('flight-search-form').addEventListener('submit', async (
     if (data.error) {
       resultsDiv.innerHTML = `<p style="color:red;">Error: ${data.error}</p>`;
       document.getElementById('loader').style.display = 'none';
+      document.getElementById('show-selected').style.display = 'none';
       return;
     }
 
     if (!data.offers || data.offers.length === 0) {
       resultsDiv.innerHTML = `<p>No flights found.</p>`;
       document.getElementById('loader').style.display = 'none';
+      document.getElementById('show-selected').style.display = 'none';
       return;
     }
 
@@ -84,8 +86,15 @@ document.getElementById('flight-search-form').addEventListener('submit', async (
       document.getElementById('loader').style.display = 'none';
     });
 
+    // ✅ Move these lines here:
+    lastOffers = data.offers;
+    document.getElementById('show-selected').style.display = 'inline-block';
+
+    document.getElementById('loader').style.display = 'none';
+
   } catch (err) {
     document.getElementById('loader').style.display = 'none';
+    document.getElementById('show-selected').style.display = 'none';
     console.error("Fetch error:", err);
     document.getElementById('results').innerHTML = `<p style="color:red;">Error fetching flights. Check console.</p>`;
   }
@@ -193,15 +202,6 @@ document.getElementById('copySelected').onclick = function() {
     alert('Copied to clipboard!');
   });
 };
-
-// Show the "Show Selected" button when results are rendered
-// ...inside your submit handler, after rendering results...
-lastOffers = data.offers;
-if (data.offers && data.offers.length > 0) {
-  document.getElementById('show-selected').style.display = 'inline-block';
-} else {
-  document.getElementById('show-selected').style.display = 'none';
-}
 
 const airlineDomains = {
   AA: "americanairlines.com",
