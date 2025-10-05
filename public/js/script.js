@@ -113,7 +113,7 @@ function attachAutocomplete(inputId) {
       offer.flights.forEach(segment => {
   const airlineCode = segment.airline || segment.operating?.carrierCode;
   const domain = airlineDomains[airlineCode]; // keep uppercase
-  const logoUrl = domain ? `https://logo.dev/${domain}` : null;
+  const logoUrl = domain ? `/logo/${domain}` : null;
 
   html += `
     <div class="flight-segment">

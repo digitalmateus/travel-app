@@ -99,6 +99,24 @@ app.post('/search-flights', async (req, res) => {
 });
 
 // ===========================
+// 🖼 Airline Logo Proxy
+// ===========================
+app.get('/logo/:domain', async (req, res) => {
+  const domain = req.params.domain;
+  const token = process.env.LOGO_DEV_KEY;
+  const logoUrl = `https://img.logo.dev/${domain}?token=${token}`;
+
+  try {
+    const response = await axios.get(logoUrl, { responseType: 'arraybuffer' });
+    res.set('Content-Type', 'image/png');
+    res.send(response.data);
+  } catch (error) {
+    console.error(`❌ Error fetching logo for ${domain}:`, error.message);
+    res.status(404).send('Logo not available');
+  }
+});
+
+// ===========================
 // 🌍 Autocomplete Endpoint
 // ===========================
 app.get('/autocomplete', async (req, res) => {
