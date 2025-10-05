@@ -259,6 +259,63 @@ footer {
 .close:hover { color: #000; }
 /* end of modal */
 
+
+/* show selected button at the end of search */
+
+/* ...existing code... */
+
+#show-selected {
+  display: none;
+  background: linear-gradient(90deg, #0078d7 0%, #00b4d8 100%);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  cursor: pointer;
+  margin: 24px auto 0 auto;
+  transition: background 0.3s, transform 0.2s;
+  letter-spacing: 1px;
+  display: block;
+}
+
+#show-selected:hover, #show-selected:focus {
+  background: linear-gradient(90deg, #00b4d8 0%, #0078d7 100%);
+  transform: translateY(-2px) scale(1.04);
+  outline: none;
+}
+
+/* ...existing code... */
+
+/* modal winbdow customizations */  
+
+/* ...existing code... */
+
+#selectedModal .modal-content button {
+  background: linear-gradient(90deg, #0078d7 0%, #00b4d8 100%);
+  color: #fff;
+  border: none;
+  border-radius: 22px;
+  padding: 10px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 10px 8px 0 0;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.3s, transform 0.2s;
+}
+
+#selectedModal .modal-content button:hover,
+#selectedModal .modal-content button:focus {
+  background: linear-gradient(90deg, #00b4d8 0%, #0078d7 100%);
+  transform: translateY(-2px) scale(1.04);
+  outline: none;
+}
+
+/* ...existing code... */
+
 /* =========================
    Responsive
    ========================= */
