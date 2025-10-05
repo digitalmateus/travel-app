@@ -142,6 +142,62 @@ function formatDuration(isoDuration) {
   return `${hours}h ${minutes}m`;
 }
 
+let lastOffers = [];
+
+document.getElementById('show-selected').addEventListener('click', () => {
+  const checkboxes = document.querySelectorAll('.offer-select:checked');
+  const selectedIndexes = Array.from(checkboxes).map(cb => parseInt(cb.value));
+  const selectedOffers = selectedIndexes.map(idx => lastOffers[idx]);
+
+  // Format selected offers for display
+  let html = '';
+  selectedOffers.forEach((offer, i) => {
+    html += `<div style="border-bottom:1px solid #ccc;margin-bottom:10px;padding-bottom:10px;">
+      <strong>Option ${i + 1}</strong><br>
+      Price: ${offer.currency} ${offer.price}<br>
+      Duration: ${offer.duration}<br>
+      Stops: ${offer.stops}<br>
+      ${offer.flights.map(seg => `
+        <div>
+          ${seg.airline || ''} ${seg.flightNumber || ''}: 
+          ${seg.departureAirport} → ${seg.arrivalAirport} 
+          (${seg.duration})
+        </div>
+      `).join('')}
+    </div>`;
+  });
+
+  document.getElementById('selectedDetails').innerHTML = html || '<em>No options selected.</em>';
+  document.getElementById('selectedModal').style.display = 'block';
+});
+
+// Modal close logic
+document.getElementById('closeModal').onclick = function() {
+  document.getElementById('selectedModal').style.display = 'none';
+};
+window.onclick = function(event) {
+  if (event.target == document.getElementById('selectedModal')) {
+    document.getElementById('selectedModal').style.display = 'none';
+  }
+};
+
+// Copy to clipboard
+document.getElementById('copySelected').onclick = function() {
+  const text = document.getElementById('selectedDetails').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    alert('Copied to clipboard!');
+  });
+};
+
+// Show the "Show Selected" button when results are rendered
+// ...inside your submit handler, after rendering results...
+lastOffers = data.offers;
+if (data.offers && data.offers.length > 0) {
+  document.getElementById('show-selected').style.display = 'inline-block';
+} else {
+  document.getElementById('show-selected').style.display = 'none';
+}
+
 const airlineDomains = {
   AA: "americanairlines.com",
   DL: "delta.com",

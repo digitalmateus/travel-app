@@ -31,49 +31,60 @@
   </header>
 
   <main>
-    <form id="flight-search-form">
+      <form id="flight-search-form">
 
-      <div class="input-group">
-        <label for="departure">Departure:</label>
-        <input type="text" id="departure" name="departure" placeholder="City or Airport (IATA code)" required />
-      </div>
+        <div class="input-group">
+          <label for="departure">Departure:</label>
+          <input type="text" id="departure" name="departure" placeholder="City or Airport (IATA code)" required />
+        </div>
 
-      <div class="input-group">
-        <label for="arrival">Arrival:</label>
-        <input type="text" id="arrival" name="arrival" placeholder="City or Airport (IATA code)" required />
-      </div>
+        <div class="input-group">
+          <label for="arrival">Arrival:</label>
+          <input type="text" id="arrival" name="arrival" placeholder="City or Airport (IATA code)" required />
+        </div>
 
-      <div class="input-group">
-        <label for="date-departure">Departure Date:</label>
-        <input type="date" id="date-departure" name="date-departure" required />
-      </div>
+        <div class="input-group">
+          <label for="date-departure">Departure Date:</label>
+          <input type="date" id="date-departure" name="date-departure" required />
+        </div>
 
-      <div class="input-group">
-        <label for="date-returning">Return Date:</label>
-        <input type="date" id="date-returning" name="date-returning" />
-      </div>
+        <div class="input-group">
+          <label for="date-returning">Return Date:</label>
+          <input type="date" id="date-returning" name="date-returning" />
+        </div>
 
-      <label>
-        <input type="checkbox" id="one-way" name="one-way" />
-        One way only
-      </label>
+        <label>
+          <input type="checkbox" id="one-way" name="one-way" />
+          One way only
+        </label>
 
-      <button type="submit">Search Flights</button>
-    </form>
+        <button type="submit">Search Flights</button>
+      </form>
 
+      
+
+    <!-- ✅ Results area -->
+    <section id="results"></section>
+    <button id="show-selected" style="display:none;">Show Selected</button>
     
 
-  <!-- ✅ Results area -->
-  <section id="results"></section>
-  
-  
-
-</main>
-
+  </main>
 
   <footer>
     <p>&copy; 2025 Cheap Flights. All rights reserved.</p>
   </footer>
+
   <script src="/js/script.js" defer></script>
+
+  <div id="selectedModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2>Selected Flight Options</h2>
+      <div id="selectedDetails"></div>
+      <button onclick="window.print()">Print</button>
+      <button id="copySelected">Copy</button>
+    </div>
+  </div>
+  
 </body>
 </html>
