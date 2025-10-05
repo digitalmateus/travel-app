@@ -266,10 +266,10 @@ footer {
 
 #show-selected {
   display: none;
-  background: linear-gradient(90deg, #0078d7 0%, #00b4d8 100%);
+  background: var(--color-secondary);
   color: #fff;
   border: none;
-  border-radius: 25px;
+  border-radius: 5px;
   padding: 12px 32px;
   font-size: 1.1rem;
   font-weight: bold;
@@ -282,7 +282,7 @@ footer {
 }
 
 #show-selected:hover, #show-selected:focus {
-  background: linear-gradient(90deg, #00b4d8 0%, #0078d7 100%);
+  background: var(--color-third);
   transform: translateY(-2px) scale(1.04);
   outline: none;
 }
@@ -294,10 +294,10 @@ footer {
 /* ...existing code... */
 
 #selectedModal .modal-content button {
-  background: linear-gradient(90deg, #0078d7 0%, #00b4d8 100%);
+  background: var(--color-secondary);
   color: #fff;
   border: none;
-  border-radius: 22px;
+  border-radius: 5px;
   padding: 10px 28px;
   font-size: 1rem;
   font-weight: 600;
@@ -309,7 +309,7 @@ footer {
 
 #selectedModal .modal-content button:hover,
 #selectedModal .modal-content button:focus {
-  background: linear-gradient(90deg, #00b4d8 0%, #0078d7 100%);
+  background: var(--color-third);
   transform: translateY(-2px) scale(1.04);
   outline: none;
 }
