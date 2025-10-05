@@ -66,17 +66,18 @@ document.getElementById('flight-search-form').addEventListener('submit', async (
         const airlineCode = segment.airline || segment.operating?.carrierCode;
         const domain = airlineDomains[airlineCode];
         const logoUrl = domain ? `/logo/${domain}` : null;
+        const airlineName = airlineNames[airlineCode] || airlineCode || '';
 
         html += `
-          <div class="flight-segment">
-            ${logoUrl ? `<img src="${logoUrl}" alt="${airlineCode} logo" class="airline-logo" onerror="this.style.display='none';" />` : ''}
-            <p><strong>${airlineCode} ${segment.flightNumber}</strong></p>
-            <p>${segment.departureAirport} → ${segment.arrivalAirport}</p>
-            <p><strong>Duration:</strong> ${formatDuration(offer.duration)}</p>
-            <p><strong>Segment Duration:</strong> ${formatDuration(segment.duration)}</p>
-          </div>
-        `;
-      });
+        <div class="flight-segment">
+          ${logoUrl ? `<img src="${logoUrl}" alt="${airlineCode} logo" class="airline-logo" onerror="this.style.display='none';" />` : ''}
+          <p><strong>${airlineCode} ${airlineName} ${segment.flightNumber}</strong></p>
+          <p>${segment.departureAirport} → ${segment.arrivalAirport}</p>
+          <p><strong>Duration:</strong> ${formatDuration(offer.duration)}</p>
+          <p><strong>Segment Duration:</strong> ${formatDuration(segment.duration)}</p>
+        </div>
+      `;
+    });
 
       flight.innerHTML = html;
       resultsDiv.appendChild(flight);
@@ -152,20 +153,24 @@ document.getElementById('show-selected').addEventListener('click', () => {
   // Format selected offers for display
   let html = '';
   selectedOffers.forEach((offer, i) => {
-    html += `<div style="border-bottom:1px solid #ccc;margin-bottom:10px;padding-bottom:10px;">
-      <strong>Option ${i + 1}</strong><br>
-      Price: ${offer.currency} ${offer.price}<br>
-      Duration: ${offer.duration}<br>
-      Stops: ${offer.stops}<br>
-      ${offer.flights.map(seg => `
+  html += `<div style="border-bottom:1px solid #ccc;margin-bottom:10px;padding-bottom:10px;">
+    <strong>Option ${i + 1}</strong><br>
+    Price: ${offer.currency} ${offer.price}<br>
+    Duration: ${offer.duration}<br>
+    Stops: ${offer.stops}<br>
+    ${offer.flights.map(seg => {
+      const airlineCode = seg.airline || seg.operating?.carrierCode;
+      const airlineName = airlineNames[airlineCode] || airlineCode || '';
+      return `
         <div>
-          ${seg.airline || ''} ${seg.flightNumber || ''}: 
+          ${airlineCode} ${airlineName} ${seg.flightNumber || ''}: 
           ${seg.departureAirport} → ${seg.arrivalAirport} 
           (${seg.duration})
         </div>
-      `).join('')}
-    </div>`;
-  });
+      `;
+    }).join('')}
+  </div>`;
+});
 
   document.getElementById('selectedDetails').innerHTML = html || '<em>No options selected.</em>';
   document.getElementById('selectedModal').style.display = 'block';
@@ -231,4 +236,39 @@ const airlineDomains = {
   VS: "virginatlantic.com",
   SN: "brusselsairlines.com",
   OS: "austrian.com",
+};
+
+const airlineNames = {
+  AA: "American Airlines",
+  DL: "Delta Air Lines",
+  UA: "United Airlines",
+  LA: "LATAM Airlines",
+  G3: "GOL Linhas Aéreas",
+  AD: "Azul Linhas Aéreas",
+  AF: "Air France",
+  BA: "British Airways",
+  LH: "Lufthansa",
+  EK: "Emirates",
+  QR: "Qatar Airways",
+  CM: "Copa Airlines",
+  TK: "Turkish Airlines",
+  IB: "Iberia",
+  KL: "KLM",
+  AC: "Air Canada",
+  QF: "Qantas",
+  NH: "ANA All Nippon Airways",
+  JL: "Japan Airlines",
+  ET: "Ethiopian Airlines",
+  F9: "Frontier Airlines",
+  WN: "Southwest Airlines",
+  AS: "Alaska Airlines",
+  B6: "JetBlue Airways",
+  NZ: "Air New Zealand",
+  CX: "Cathay Pacific",
+  UX: "Air Nostrum",
+  VY: "Vueling",
+  TP: "TAP Air Portugal",
+  VS: "Virgin Atlantic",
+  SN: "Brussels Airlines",
+  OS: "Austrian Airlines",
 };
