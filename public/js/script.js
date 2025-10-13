@@ -67,7 +67,7 @@ document.getElementById('flight-search-form').addEventListener('submit', async (
       offer.flights.forEach(segment => {
         const airlineCode = segment.airline || segment.operating?.carrierCode;
         const domain = airlineDomains[airlineCode];
-        const logoUrl = domain ? `/logo/${domain}` : null;
+        const logoUrl = domain ? `https://img.logo.dev/${domain}?token=pk_V1ufOQZzS_K3boH6HSZOWg` : null;
         const airlineName = airlineNames[airlineCode] || airlineCode || '';
 
         html += `
