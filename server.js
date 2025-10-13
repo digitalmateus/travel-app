@@ -104,17 +104,26 @@ app.post('/search-flights', async (req, res) => {
 app.get('/logo/:domain', async (req, res) => {
   const domain = req.params.domain;
   const token = process.env.LOGO_DEV_KEY;
-  const logoUrl = `https://img.logo.dev/${domain}?token=${token}`;
+  const logoUrl = `https://api.logo.dev/domains/${domain}`;
+
 
   try {
-    const response = await axios.get(logoUrl, { responseType: 'arraybuffer' });
+    const response = await axios.get(logoUrl, {
+      responseType: 'arraybuffer',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'image/png'
+      }
+    });
+
     res.set('Content-Type', 'image/png');
     res.send(response.data);
   } catch (error) {
-    console.error(`❌ Error fetching logo for ${domain}:`, error.message);
+    console.error(`❌ Error fetching logo for ${domain}:`, error.response?.status, error.response?.data || error.message);
     res.status(404).send('Logo not available');
   }
 });
+
 
 // ===========================
 // 🌍 Autocomplete Endpoint
