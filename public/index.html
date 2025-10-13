@@ -13,21 +13,8 @@
   <header>
     <div class="logo">
       <img src="/images/travel-logo.png" alt="Company Logo" />
-    </div>
-
-    <div id="loader">
-      <div class="plane-animation">✈️</div> 
-      <p>Looking for flights...</p>
-    </div>
-
-    <nav>
-      <ul>
-        <li><a href="#">Profile</a></li>
-      </ul>
-    </nav>
-
-    
-
+    </div>  
+    <a href="/profile.html" class="btn">Agency Profile</a>
   </header>
 
   <main>
@@ -64,8 +51,14 @@
       
 
     <!-- show the fight results-->
+     <div id="loader" class="hidden">
+      <div class="plane-animation">✈️</div> 
+      <p>Looking for flights...</p>
+    </div>
+
     <section id="results"></section>
-    <button id="show-selected">Show Selected</button>
+    
+    <button id="show-selected" class="hidden">Show Selected</button>
     
 
   </main>
@@ -86,6 +79,43 @@
     </div>
   </div>
 
+  <section id="perfil" class="hidden">
+    <h3>Perfil da Empresa</h3>
+    <form id="perfilForm">
+      
+      <label for="nomeEmpresa">Company Profile:</label>
+      <input
+        type="text"
+        id="nomeEmpresa"
+        placeholder="Enter company name"
+        required
+      />
+
+      <label for="telefoneEmpresa">Phone:</label>
+      <input
+        type="tel"
+        id="telefoneEmpresa"
+        placeholder="(00) 00000-0000"
+        required
+      />
+
+      <label for="logoEmpresa">Company Logo:</label>
+      <input
+        type="file"
+        id="logoEmpresa"
+        accept="image/*"
+        title="Select the company logo file"
+      />
+
+      <button type="submit">Save Profile</button>
+    </form>
+
+    <div id="perfilPreview">
+      <img id="previewLogo" src="" alt="Company Logo">
+      <p id="previewNome"></p>
+      <p id="previewTelefone"></p>
+    </div>
+  </section>
   
 </body>
 </html>

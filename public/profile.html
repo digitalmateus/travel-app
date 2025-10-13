@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Company Profile</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script src="/js/profile.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="/images/travel-logo.png" alt="Company Logo" />
+    </div>
+    <a href="/index.html" class="btn">Search Flights</a>
+  </header>
+
+  <main>
+    <div class="profile-title"><h2>Company Profile</h2></div>
+    <p class="profile-description">Manage your company profile information below.</p>
+    
+    <form id="profileForm">
+      <label for="companyName">Company Name:</label>
+      <input type="text" id="companyName" required />
+
+      <label for="companyPhone">Phone:</label>
+      <input type="tel" id="companyPhone" required />
+
+      <label for="companyLogo">Company Logo:</label>
+      <input type="file" id="companyLogo" accept="image/*" />
+
+      <button type="submit">Save Profile</button>
+    </form>
+
+    <div id="profilePreview" style="display:none; margin-top:20px;">
+      <img id="previewLogo" src="" alt="Company Logo" style="max-width:100px;" />
+      <p id="previewName"></p>
+      <p id="previewPhone"></p>
+    </div>
+  </main>
+</body>
+</html>

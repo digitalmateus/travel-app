@@ -22,16 +22,19 @@ body {
 
 header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: var(--color-primary);
   color: white;
-  padding: 15px 30px;
+  padding: 20px;
   border-radius: 8px;
+  text-align: center;
+  gap: 12px;
 }
 
 .logo img {
-  height: 80px;
+  height: 120px;
 }
 
 nav ul {
@@ -216,7 +219,7 @@ footer {
   text-align: center;
   margin-top: 20px;
   font-weight: bold;
-  color: #fcfcfc;
+  color: #20054f;
 }
 
 .plane-animation {
@@ -229,6 +232,7 @@ footer {
 .loader-text {
   font-size: 1rem;
   margin-top: 5px;
+  background-color: #000d6b;
 }
 
 @keyframes fly {
@@ -257,12 +261,10 @@ footer {
   cursor: pointer;
 }
 .close:hover { color: #000; }
-/* end of modal */
 
 
 /* show selected button at the end of search */
 
-/* ...existing code... */
 
 #show-selected {
   display: none;
@@ -287,11 +289,9 @@ footer {
   outline: none;
 }
 
-/* ...existing code... */
 
 /* modal winbdow customizations */  
 
-/* ...existing code... */
 
 #selectedModal .modal-content button {
   background: var(--color-secondary);
@@ -314,16 +314,50 @@ footer {
   outline: none;
 }
 
-/* ...existing code... */
+#show-selected {
+  display: none; /* oculto por padrão */
+}
+
+#show-selected.visible {
+  display: inline-block; /* aparece quando tiver resultados */
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.btn {
+  background-color: var(--color-secondary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--color-third);
+}
+
 
 /* =========================
    Responsive
    ========================= */
 @media (max-width: 600px) {
   header {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary);
+    color: white;
     padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    gap: 12px;
   }
 
   nav ul {
@@ -404,4 +438,224 @@ footer {
 .close:focus {
   color: red;
   text-decoration: none;
+}
+
+
+/* COMPANY PROFILE */
+
+#perfil {
+  display: none;
+}
+
+#perfil {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+
+#perfil h3 {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+#perfilForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#perfilForm label {
+  font-weight: 600;
+}
+
+#perfilForm input[type="text"],
+#perfilForm input[type="tel"],
+#perfilForm input[type="file"] {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+#perfilForm button {
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#perfilForm button:hover {
+  background-color: #004c99;
+}
+
+#perfilPreview {
+  margin-top: 15px;
+  text-align: center;
+  display: none;
+}
+
+#previewLogo {
+  max-width: 100px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+#previewNome {
+  font-weight: bold;
+  margin: 0;
+}
+
+#previewTelefone {
+  margin: 0;
+  color: #555;
+}
+
+#perfilPreview img {
+  max-width: 120px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+#show-selected {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#show-selected:hover {
+  background-color: #218838;
+}
+
+
+/* PROFILE PAGE ADJUSTMENTS */
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+  gap: 12px;
+  text-align: center;
+}
+
+.profile-main {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.profile-main h2 {
+  margin-bottom: 20px;
+  color: var(--color-primary);
+}
+
+#profileForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#profileForm label {
+  font-weight: bold;
+  text-align: left;
+}
+
+#profileForm input[type="text"],
+#profileForm input[type="tel"],
+#profileForm input[type="file"] {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+#profileForm button {
+  background-color: var(--color-secondary);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+#profileForm button:hover {
+  background-color: var(--color-third);
+}
+
+#profilePreview {
+  display: none;
+  margin-top: 30px;
+  padding: 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#profilePreview img {
+  display: block;
+  max-width: 120px;
+  margin: 0 auto 10px auto;
+  border-radius: 8px;
+}
+
+#previewName {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+#previewPhone {
+  color: var(--color-neutral);
+  font-size: 1rem;
+  margin: 4px 0 0 0;
+}
+
+.btn {
+  background-color: var(--color-secondary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--color-third);
+}
+
+.profile-title {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.profile-description {
+  text-align: center;
+  padding-bottom: 20px;
 }
